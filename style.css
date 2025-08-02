@@ -1,17 +1,31 @@
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
     color: #fff;
     background: #0b1120;
+    overflow-x: hidden;
 }
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem 3rem;
     position: fixed;
     width: 100%;
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(12px);
+    z-index: 1000;
+}
+header nav a {
+    margin: 0 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+header nav a:hover {
+    color: #00f2fe;
 }
 .hero {
     text-align: center;
@@ -28,24 +42,122 @@ header {
     color: #00f2fe;
 }
 .btn {
+    display: inline-block;
     padding: 0.8rem 2rem;
+    margin-top: 1rem;
     background: linear-gradient(45deg, #00f2fe, #4facfe);
     color: #000;
     font-weight: bold;
     border-radius: 8px;
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
 }
+/* Ripple effect */
+.btn::after {
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,0.5);
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s;
+}
+.btn:active::after {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 1;
+    transition: 0s;
+}
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #0b1120, #1e3a8a, #0f172a, #1e293b);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    z-index: 0;
+}
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* Floating icons with parallax */
 .floating-icons img {
     position: absolute;
-    width: 50px;
-    opacity: 0.2;
-    animation: float 10s ease-in-out infinite;
+    width: 60px;
+    opacity: 0.15;
+    animation: float 12s ease-in-out infinite;
 }
 .icon1 { top: 20%; left: 5%; }
-.icon2 { top: 40%; right: 10%; animation-delay: 2s; }
-.icon3 { bottom: 15%; left: 20%; animation-delay: 4s; }
+.icon2 { top: 50%; right: 10%; animation-delay: 3s; }
+.icon3 { bottom: 15%; left: 20%; animation-delay: 6s; }
 @keyframes float {
     0% { transform: translateY(0); }
     50% { transform: translateY(-30px); }
     100% { transform: translateY(0); }
+}
+section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.skills-grid, .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+.card {
+    padding: 1rem;
+    text-align: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.glow {
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+}
+.timeline {
+    border-left: 3px solid #00f2fe;
+    padding-left: 2rem;
+}
+.timeline-item {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #111;
+}
+.footer-copy {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #bbb;
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-in-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
