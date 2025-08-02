@@ -157,13 +157,11 @@
         }
         
         /* --- Skills Scroller --- */
-        .skills-scroller-container {
-            padding: 2rem 0; /* Increased padding for pop-up effect */
-        }
         .skills-scroller {
             overflow-x: auto;
-            padding: 0 1.5rem; /* Padding to prevent clipping */
-            margin: 0 -1.5rem; /* Counteract container padding */
+            /* Generous padding for hover effect and scrollbar spacing */
+            padding: 1.5rem 1.5rem 2.5rem 1.5rem; 
+            margin: 0 -1.5rem; /* Counteract container padding for edge-to-edge feel */
         }
         .skills-scroller-inner {
             display: flex;
@@ -223,6 +221,37 @@
         #mobile-menu.open {
             max-height: 500px; /* Adjust as needed */
         }
+        
+        /* Animated Hamburger Icon */
+        .hamburger {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            transition: all 0.25s;
+            position: relative;
+        }
+        .hamburger-bar {
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-secondary);
+            border-radius: 2px;
+            transition: all 0.25s;
+        }
+        .hamburger-bar-top { top: 4px; }
+        .hamburger-bar-middle { top: 11px; }
+        .hamburger-bar-bottom { top: 18px; }
+        .hamburger.open .hamburger-bar-top {
+            transform: rotate(45deg);
+            top: 11px;
+        }
+        .hamburger.open .hamburger-bar-middle {
+            opacity: 0;
+        }
+        .hamburger.open .hamburger-bar-bottom {
+            transform: rotate(-45deg);
+            top: 11px;
+        }
 
     </style>
 </head>
@@ -247,8 +276,12 @@
                     <svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
                     <svg id="theme-icon-light" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
                 </button>
-                <button id="mobile-menu-btn" class="md:hidden p-2 ml-2 rounded-md text-secondary focus:outline-none">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                <button id="mobile-menu-btn" class="md:hidden p-2 ml-2 focus:outline-none">
+                    <div class="hamburger">
+                        <div class="hamburger-bar hamburger-bar-top"></div>
+                        <div class="hamburger-bar hamburger-bar-middle"></div>
+                        <div class="hamburger-bar hamburger-bar-bottom"></div>
+                    </div>
                 </button>
             </div>
         </div>
@@ -305,15 +338,13 @@
                 <svg class="w-8 h-8 section-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
                 Skills
             </h2>
-            <div class="skills-scroller-container">
-                <div class="skills-scroller">
-                    <div class="skills-scroller-inner">
-                        <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Test Automation</h3><p class="text-sm text-secondary">Selenium WebDriver, Appium, Java, Postman, Test Script Writing, Framework Designing</p></div>
-                        <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Frameworks & Tools</h3><p class="text-sm text-secondary">JUnit, TestNG, JIRA, OpenProject, Bugzilla, Git, J Meter</p></div>
-                        <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Methodologies</h3><p class="text-sm text-secondary">Agile/Scrum, Functional, Regression, Smoke/Sanity, UAT, Exploratory, Usability Testing</p></div>
-                        <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Technical Skills</h3><p class="text-sm text-secondary">Java, MySQL, SQL, Team Collaboration</p></div>
-                        <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Domain Expertise</h3><p class="text-sm text-secondary">E-commerce, Medical</p></div>
-                    </div>
+            <div class="skills-scroller">
+                <div class="skills-scroller-inner">
+                    <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Test Automation</h3><p class="text-sm text-secondary">Selenium WebDriver, Appium, Java, Postman, Test Script Writing, Framework Designing</p></div>
+                    <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Frameworks & Tools</h3><p class="text-sm text-secondary">JUnit, TestNG, JIRA, OpenProject, Bugzilla, Git, J Meter</p></div>
+                    <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Methodologies</h3><p class="text-sm text-secondary">Agile/Scrum, Functional, Regression, Smoke/Sanity, UAT, Exploratory, Usability Testing</p></div>
+                    <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Technical Skills</h3><p class="text-sm text-secondary">Java, MySQL, SQL, Team Collaboration</p></div>
+                    <div class="flex-shrink-0 w-72 sm:w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Domain Expertise</h3><p class="text-sm text-secondary">E-commerce, Medical</p></div>
                 </div>
             </div>
         </section>
@@ -584,6 +615,17 @@
                         item.classList.add('active');
                         content.style.maxHeight = content.scrollHeight + 'px';
                         arrow.classList.add('rotate-180');
+                        
+                        // Auto-scroll to the opened item
+                        setTimeout(() => {
+                            const headerOffset = document.getElementById('header').offsetHeight;
+                            const elementPosition = item.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }, 500); // Delay to allow accordion animation to finish
                     }
                 });
             });
@@ -602,13 +644,6 @@
             
             // --- Skills Scroller JS Implementation ---
             const scroller = document.querySelector('.skills-scroller');
-            const scrollerInner = scroller.querySelector('.skills-scroller-inner');
-            const originalContent = Array.from(scrollerInner.children);
-            
-            originalContent.forEach(item => {
-                scrollerInner.appendChild(item.cloneNode(true));
-            });
-
             let isHovering = false;
             let scrollInterval;
             let direction = 1;
@@ -617,7 +652,7 @@
                 if (scrollInterval) clearInterval(scrollInterval);
                 scrollInterval = setInterval(() => {
                     if (!isHovering) {
-                        if (scroller.scrollLeft >= (scroller.scrollWidth - scroller.clientWidth -1)) {
+                        if (scroller.scrollLeft >= (scroller.scrollWidth - scroller.clientWidth - 1)) {
                             direction = -1;
                         } else if (scroller.scrollLeft <= 0) {
                             direction = 1;
@@ -651,8 +686,10 @@
                         });
                         
                         // Close mobile menu on click
+                        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
                         if(mobileMenu.classList.contains('open')) {
                             mobileMenu.classList.remove('open');
+                            mobileMenuBtn.querySelector('.hamburger').classList.remove('open');
                         }
                     });
                 });
@@ -665,6 +702,7 @@
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('open');
+                mobileMenuBtn.querySelector('.hamburger').classList.toggle('open');
             });
 
 
