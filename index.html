@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio website for Avnesh Pandey - QA Automation Engineer" />
+    <meta name="author" content="Avnesh Pandey" />
+    <title>Avnesh Pandey | QA Automation Engineer</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Floating QA Icons -->
+    <div class="floating-icons">
+        <img src="assets/selenium.svg" class="float-icon icon1" alt="Selenium">
+        <img src="assets/appium.svg" class="float-icon icon2" alt="Appium">
+        <img src="assets/bug.svg" class="float-icon icon3" alt="Bug">
+    </div>
+
+    <!-- Header -->
+    <header class="header glass">
+        <div class="logo">AP</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button id="theme-toggle">🌙</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <h1 class="name">Avnesh Pandey</h1>
+        <p class="tagline"><span id="typing"></span></p>
+        <a href="AvneshPandey_QA_Automationtester.pdf" download class="btn">Download Resume</a>
+        <div class="lottie-container">
+            <lottie-player src="assets/qa-badge.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="fade-in">
+        <h2>About Me</h2>
+        <p>Detail-oriented QA & Automation Engineer with experience in Selenium, Appium, API Testing, and performance testing using JMeter. Passionate about delivering high-quality solutions with efficient automation strategies.</p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="fade-in">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="card">Selenium</div>
+            <div class="card">Appium</div>
+            <div class="card">Java</div>
+            <div class="card">Postman</div>
+            <div class="card">JMeter</div>
+            <div class="card">SQL</div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="fade-in">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item glass">
+                <h3>Quality Analyst Engineer</h3>
+                <p>Open Space Services Pvt Ltd | May 2023 - Present</p>
+                <ul>
+                    <li>Developed and executed automated test scripts for healthcare projects.</li>
+                    <li>Worked on Selenium with Java and Appium for mobile testing.</li>
+                </ul>
+            </div>
+            <div class="timeline-item glass">
+                <h3>Sr. Technical Executive</h3>
+                <p>The Gemini | 2021 - 2023</p>
+                <ul>
+                    <li>Manual testing, defect tracking, UAT execution.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="fade-in">
+        <h2>Certifications</h2>
+        <div class="cert-grid">
+            <div class="card">Selenium WebDriver with Java - Udemy</div>
+            <div class="card">Appium Mobile Testing - Udemy</div>
+            <div class="card">XPath Advanced Tutorial - Udemy</div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <footer id="contact" class="fade-in">
+        <h2>Get in Touch</h2>
+        <p>Email: <a href="mailto:avipandey50@gmail.com">avipandey50@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/avnesh-p-5285b4208" target="_blank">Profile</a></p>
+        <p>GitHub: <a href="https://github.com/avnesh" target="_blank">avnesh</a></p>
+        <p class="footer-copy">&copy; <span id="year"></span> Avnesh Pandey</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
