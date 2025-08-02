@@ -1,292 +1,643 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio website for Avnesh Pandey - QA Automation Engineer" />
-    <meta name="author" content="Avnesh Pandey" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio and resume for Avnesh Pandey, a skilled QA Automation Engineer with experience in Selenium, Appium, and J Meter.">
+    <meta name="keywords" content="Avnesh Pandey, QA, Quality Analyst, Automation Tester, Selenium, Appium, Java, Manual Testing, Resume, Portfolio">
+    <meta name="author" content="Avnesh Pandey">
+
     <title>Avnesh Pandey | QA Automation Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Particles.js for animated background -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles and Theming -->
     <style>
+        /* Base styles */
         body {
-            margin: 0;
             font-family: 'Inter', sans-serif;
-            color: #fff;
-            background: #0b1120;
             overflow-x: hidden;
         }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 3rem;
+
+        /* --- Color Palette & Theming --- */
+        :root.light {
+            --bg-primary: #f0f4f8;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent-primary: #4f46e5;
+            --accent-hover: #4338ca;
+            --border-color: #0ea5e9; /* Sky Blue */
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+            --accent-gradient: linear-gradient(45deg, #4f46e5, #14b8a6);
+        }
+
+        :root.dark {
+            --bg-primary: #0a101f;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent-primary: #818cf8;
+            --accent-hover: #6366f1;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(20, 30, 55, 0.55);
+            --glow-color: #00d5ff;
+            --glow-bg-color: #1a2c47;
+            --accent-gradient: linear-gradient(45deg, #818cf8, #2dd4bf);
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+        /* --- Animated Background --- */
+        #particles-js {
             position: fixed;
             width: 100%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-        }
-        header nav a {
-            margin: 0 1rem;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        header nav a:hover {
-            color: #00f2fe;
-        }
-        .hero {
-            text-align: center;
-            padding: 12rem 2rem 6rem;
-            position: relative;
-            z-index: 10;
-        }
-        .hero .name {
-            font-size: 4rem;
-            font-weight: 800;
-        }
-        .tagline {
-            font-size: 1.8rem;
-            color: #00f2fe;
-        }
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            margin-top: 1rem;
-            background: linear-gradient(45deg, #00f2fe, #4facfe);
-            color: #000;
-            font-weight: bold;
-            border-radius: 8px;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn::after {
-            content: '';
-            position: absolute;
-            background: rgba(255,255,255,0.5);
-            width: 100px;
-            height: 100px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            border-radius: 50%;
-            opacity: 0;
-            transition: transform 0.6s, opacity 0.6s;
-        }
-        .btn:active::after {
-            transform: translate(-50%, -50%) scale(4);
-            opacity: 1;
-            transition: 0s;
-        }
-        .hero-bg {
-            position: absolute;
+            height: 100%;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(-45deg, #0b1120, #1e3a8a, #0f172a, #1e293b);
-            background-size: 400% 400%;
-            animation: gradient 10s ease infinite;
-            z-index: 0;
+            z-index: -1;
+            background-color: var(--bg-primary);
+            transition: background-color 0.5s;
         }
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+
+        /* --- Card UI Elements --- */
+        .glass-card {
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s, border 0.3s;
         }
-        .floating-icons svg {
-            position: absolute;
-            width: 60px;
-            opacity: 0.15;
-            animation: float 12s ease-in-out infinite;
+        .light .glass-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
         }
-        .icon1 { top: 20%; left: 5%; }
-        .icon2 { top: 50%; right: 10%; animation-delay: 3s; }
-        .icon3 { bottom: 15%; left: 20%; animation-delay: 6s; }
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
-            100% { transform: translateY(0); }
+        .dark .glass-card {
+            background-color: var(--glow-bg-color);
+            border: 1px solid color-mix(in srgb, var(--glow-color), transparent 70%);
+            box-shadow: 0 0 15px 0px color-mix(in srgb, var(--glow-color), transparent 70%),
+                        inset 0 0 2px 1px color-mix(in srgb, var(--glow-color), transparent 85%);
         }
-        section {
-            padding: 6rem 2rem;
-            max-width: 1100px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 5;
+        .glass-card-interactive:hover {
+            transform: translateY(-8px);
         }
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 2rem;
+        .light .glass-card-interactive:hover {
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
-        .skills-grid, .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
+        .dark .glass-card-interactive:hover {
+             box-shadow: 0 0 25px 5px color-mix(in srgb, var(--glow-color), transparent 60%),
+                        inset 0 0 4px 2px color-mix(in srgb, var(--glow-color), transparent 70%);
         }
-        .card {
-            padding: 1rem;
-            text-align: center;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            transition: transform 0.3s ease;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+
+        /* --- Typography & Gradients --- */
+        .accent-gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .card:hover {
-            transform: translateY(-10px);
+        .accent-gradient-bg {
+             background: var(--accent-gradient);
         }
-        .timeline {
-            border-left: 3px solid #00f2fe;
-            padding-left: 2rem;
+        
+        /* --- Typing Animation --- */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.8rem;
+            background: var(--accent-primary);
+            animation: blink 0.7s infinite;
+            margin-left: 4px;
         }
-        .timeline-item {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            backdrop-filter: blur(12px);
-        }
-        footer {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: #111;
-        }
-        .footer-copy {
-            margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #bbb;
-        }
-        .fade-in {
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* --- Interactive & Animated Elements --- */
+        .fade-in-section {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-in-out;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .fade-in.visible {
+        .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
+
+        @keyframes timeline-pulse {
+            50% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0.15); }
+        }
+        .dark @keyframes timeline-pulse {
+            50% { box-shadow: 0 0 0 10px rgba(129, 140, 248, 0.15); }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.9rem;
+            top: 0.5rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            border: 4px solid var(--bg-primary);
+            animation: timeline-pulse 3s infinite;
+        }
+        
+        /* Accordion Content Styling */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        
+        /* --- Skills Scroller --- */
+        .skills-scroller {
+            overflow-x: auto;
+            padding: 1.5rem 1.5rem 2rem 1.5rem; /* Increased padding top/bottom */
+            margin: 0 -1.5rem; /* Counteract container padding */
+        }
+        .skills-scroller-inner {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1.5rem;
+            width: max-content;
+        }
+        
+        /* Custom scrollbar for skills */
+        .skills-scroller::-webkit-scrollbar { height: 8px; }
+        .skills-scroller::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+        .skills-scroller::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 10px; }
+        .skills-scroller::-webkit-scrollbar-thumb:hover { background: var(--accent-hover); }
+
+        /* --- Section Decor --- */
+        .section-icon {
+            color: var(--accent-primary);
+        }
+        .section-bg-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 20rem;
+            color: var(--border-color);
+            opacity: 0.3;
+            z-index: -1;
+            transition: color 0.3s, opacity 0.3s;
+        }
+        .dark .section-bg-icon {
+            opacity: 0.05;
+        }
+        
+        /* --- Scroll to Top Button --- */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            transform: translateY(20px);
+            z-index: 100; /* Ensure it's on top */
+        }
+        #scrollTopBtn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
     </style>
 </head>
-<body>
-    <div class="hero-bg"></div>
-    <div class="floating-icons">
-        <!-- Selenium SVG -->
-        <svg class="icon1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#00f2fe"/></svg>
-        <!-- Appium SVG -->
-        <svg class="icon2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#4facfe"/></svg>
-        <!-- Bug SVG -->
-        <svg class="icon3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 12l8 8-8 8-8-8z" fill="#fff"/></svg>
-    </div>
-    <header class="header">
-        <div class="logo">AP</div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#contact">Contact</a>
-        </nav>
+<body class="bg-primary text-primary">
+
+    <!-- Animated Background Container -->
+    <div id="particles-js"></div>
+
+    <!-- Header & Navigation -->
+    <header id="header" class="glass-card sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold accent-gradient-text">AP</a>
+            <nav id="nav-menu" class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#summary" class="text-secondary hover:text-primary transition-colors duration-300">Summary</a>
+                <a href="#skills" class="text-secondary hover:text-primary transition-colors duration-300">Skills</a>
+                <a href="#experience" class="text-secondary hover:text-primary transition-colors duration-300">Experience</a>
+                <a href="#certifications" class="text-secondary hover:text-primary transition-colors duration-300">Certifications</a>
+                <a href="#contact" class="text-secondary hover:text-primary transition-colors duration-300">Contact</a>
+            </nav>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="p-2 rounded-full text-secondary hover:text-primary focus:outline-none">
+                    <svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    <svg id="theme-icon-light" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                </button>
+            </div>
+        </div>
     </header>
-    <section id="hero" class="hero">
-        <h1 class="name">Avnesh Pandey</h1>
-        <p class="tagline"><span id="typing"></span></p>
-        <a href="AvneshPandey_QA_Automationtester.pdf" download class="btn">Download Resume</a>
-        <div style="margin-top:20px;">
-            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_q5pk6p1k.json" background="transparent" speed="1" loop autoplay style="width:200px;height:200px;"></lottie-player>
-        </div>
-    </section>
-    <section id="about" class="fade-in">
-        <h2>About Me</h2>
-        <p>Detail-oriented QA & Automation Engineer with experience in Selenium, Appium, API Testing, and performance testing using JMeter. Passionate about delivering high-quality solutions with efficient automation strategies.</p>
-    </section>
-    <section id="skills" class="fade-in">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-            <div class="card">Selenium</div>
-            <div class="card">Appium</div>
-            <div class="card">Java</div>
-            <div class="card">Postman</div>
-            <div class="card">JMeter</div>
-            <div class="card">SQL</div>
-        </div>
-    </section>
-    <section id="experience" class="fade-in">
-        <h2>Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <h3>Quality Analyst Engineer</h3>
-                <p>Open Space Services Pvt Ltd | May 2023 - Present</p>
-                <ul>
-                    <li>Developed and executed automated test scripts for healthcare projects.</li>
-                    <li>Worked on Selenium with Java and Appium for mobile testing.</li>
-                </ul>
+
+    <main class="container mx-auto px-6 py-12 md:py-20 relative z-10">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center min-h-[80vh] flex flex-col justify-center items-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-primary leading-tight mb-4">Avnesh Pandey</h1>
+            <div class="text-2xl md:text-3xl font-semibold mb-6 h-10">
+                <span id="typing-text" class="accent-gradient-text"></span>
+                <span class="typing-cursor"></span>
             </div>
-            <div class="timeline-item">
-                <h3>Sr. Technical Executive</h3>
-                <p>The Gemini | 2021 - 2023</p>
-                <ul>
-                    <li>Manual testing, defect tracking, UAT execution.</li>
-                </ul>
+            <p class="max-w-3xl text-lg text-secondary">
+                 A meticulous QA professional dedicated to ensuring software integrity and performance through advanced automation and rigorous testing.
+            </p>
+        </section>
+
+        <!-- Professional Summary -->
+        <section id="summary" class="py-20 fade-in-section relative">
+            <div class="section-bg-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="w-full h-full"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286zm0 13.036h.008v.008h-.008v-.008z" /></svg>
             </div>
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center gap-4">
+                    <svg class="w-8 h-8 section-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                    Professional Summary
+                </h2>
+                <div class="glass-card glass-card-interactive p-8 rounded-2xl shadow-lg">
+                    <p class="text-lg text-secondary leading-relaxed">
+                        Detail-oriented and skilled Manual and Automation Tester with 3+ years of experience, transitioning from Support Engineer to Quality Analyst. Skilled in automation testing using Selenium with Java, mobile testing with Appium, and load testing with J Meter. Proficient in defect identification, testing methodologies, and ensuring user satisfaction. Passionate about delivering high-quality software solutions through robust testing strategies and effective collaboration.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 fade-in-section relative">
+            <div class="section-bg-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="w-full h-full"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" /></svg>
+            </div>
+            <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center gap-4">
+                <svg class="w-8 h-8 section-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" /></svg>
+                Skills
+            </h2>
+            <div class="skills-scroller">
+                <div class="skills-scroller-inner">
+                    <div class="flex-shrink-0 w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Test Automation</h3><p class="text-sm text-secondary">Selenium WebDriver, Appium, Java, Postman, Test Script Writing, Framework Designing</p></div>
+                    <div class="flex-shrink-0 w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Frameworks & Tools</h3><p class="text-sm text-secondary">JUnit, TestNG, JIRA, OpenProject, Bugzilla, Git, J Meter</p></div>
+                    <div class="flex-shrink-0 w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Methodologies</h3><p class="text-sm text-secondary">Agile/Scrum, Functional, Regression, Smoke/Sanity, UAT, Exploratory, Usability Testing</p></div>
+                    <div class="flex-shrink-0 w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Technical Skills</h3><p class="text-sm text-secondary">Java, MySQL, SQL, Team Collaboration</p></div>
+                    <div class="flex-shrink-0 w-80 glass-card glass-card-interactive p-6 rounded-xl"><h3 class="font-bold text-lg mb-3 text-primary">Domain Expertise</h3><p class="text-sm text-secondary">E-commerce, Medical</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 fade-in-section relative">
+             <div class="section-bg-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="w-full h-full"><path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.122 2.122l7.81-7.81" /></svg>
+            </div>
+            <h2 class="text-4xl font-bold text-center mb-16 flex items-center justify-center gap-4">
+                <svg class="w-8 h-8 section-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.07a2.25 2.25 0 01-2.25 2.25H5.625a2.25 2.25 0 01-2.25-2.25v-4.07a2.25 2.25 0 01.97-1.755l7.07-4.42a2.25 2.25 0 012.46 0l7.07 4.42a2.25 2.25 0 01.97 1.755z" /></svg>
+                Experience
+            </h2>
+            <div class="max-w-3xl mx-auto relative border-l-2 border-[var(--accent-primary)] pl-12">
+                <!-- Experience Item 1 -->
+                <div class="mb-12 timeline-item accordion-item">
+                    <div class="glass-card p-6 rounded-xl">
+                        <div class="accordion-trigger flex justify-between items-center cursor-pointer">
+                            <div>
+                                <p class="text-sm text-accent font-semibold">May 2023 - Present</p>
+                                <h3 class="text-xl font-bold mt-1">Quality Analyst Engineer</h3>
+                                <p class="text-md text-secondary font-medium">Open Space Services Private Limited, India</p>
+                            </div>
+                            <svg class="arrow-icon w-6 h-6 text-secondary transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="text-secondary text-sm space-y-4 pt-4">
+                                <div>
+                                    <h4 class="font-semibold text-primary">Healthcare Domain (Role: Automation Engineer)</h4>
+                                    <ul class="list-disc list-inside mt-2 space-y-1">
+                                        <li>Developed and executed automated test scripts for the Quantum Management System (QMS) using Selenium with Java.</li>
+                                        <li>Focused on validating system functionalities and improving testing efficiency through automation.</li>
+                                        <li>Collaborated with cross-functional teams to optimize test coverage and system performance.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-primary">E-Commerce (Role: Support Engineer → Manual QA)</h4>
+                                    <ul class="list-disc list-inside mt-2 space-y-1">
+                                        <li>Support Engineering: Provided end-user support by troubleshooting and resolving technical issues, managing system configurations, performing root cause analysis, and collaborating with development teams to fix software bugs.</li>
+                                        <li>Manual QA: Conducted manual testing across the web portal, admin portal, and PIM system. Executed test plans and scenarios to ensure functionality and performance.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience Item 2 -->
+                <div class="mb-12 timeline-item accordion-item">
+                     <div class="glass-card p-6 rounded-xl">
+                        <div class="accordion-trigger flex justify-between items-center cursor-pointer">
+                            <div>
+                                <p class="text-sm text-accent font-semibold">March 2021 - May 2023</p>
+                                <h3 class="text-xl font-bold mt-1">Sr. Technical Executive</h3>
+                                <p class="text-md text-secondary font-medium">The Gemini</p>
+                            </div>
+                            <svg class="arrow-icon w-6 h-6 text-secondary transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="accordion-content">
+                            <ul class="list-disc list-inside text-secondary space-y-2 text-sm pt-4">
+                                <li>Successfully implemented 6 software systems and tested 9 applications.</li>
+                                <li>Collaborated with stakeholders to gather and document analytical and business requirements across departments.</li>
+                                <li>Created test plans and test cases to perform manual testing and reported bugs using Bugzilla, tagging them for developers.</li>
+                                <li>Conducted User Acceptance Testing (UAT) post-implementation and provided production support for clients.</li>
+                                <li>Executed DML & DDL commands to resolve database-related issues and troubleshoot network problems.</li>
+                                <li>Specialized in supporting Hospital Information Management Systems (HIMS), ensuring smooth functionality and user satisfaction.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience Item 3 -->
+                <div class="mb-12 timeline-item accordion-item">
+                     <div class="glass-card p-6 rounded-xl">
+                        <div class="accordion-trigger flex justify-between items-center cursor-pointer">
+                            <div>
+                                <p class="text-sm text-accent font-semibold">April 2020 - March 2021</p>
+                                <h3 class="text-xl font-bold mt-1">Passenger Service Agent & Software Trainer</h3>
+                                <p class="text-md text-secondary font-medium">Air India Airport Services Ltd.</p>
+                            </div>
+                            <svg class="arrow-icon w-6 h-6 text-secondary transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="accordion-content">
+                             <ul class="list-disc list-inside text-secondary space-y-2 text-sm pt-4">
+                                <li>Provide new hires with software training and veteran employees with refresher courses.</li>
+                                <li>Control and manage flights throughout both takeoff and landing.</li>
+                                <li>Roster preparation and management, as well as training.</li>
+                                <li>Assisting the team with visa queries and, as a result, making the choice to allow travel.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Experience Item 4 -->
+                <div class="timeline-item accordion-item">
+                     <div class="glass-card p-6 rounded-xl">
+                        <div class="accordion-trigger flex justify-between items-center cursor-pointer">
+                            <div>
+                                <p class="text-sm text-accent font-semibold">August 2017 - April 2020</p>
+                                <h3 class="text-xl font-bold mt-1">Passenger Service Agent & Software Trainer</h3>
+                                <p class="text-md text-secondary font-medium">Celebi NAS Airport Services Pvt. Ltd.</p>
+                            </div>
+                            <svg class="arrow-icon w-6 h-6 text-secondary transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                        <div class="accordion-content">
+                             <ul class="list-disc list-inside text-secondary space-y-2 text-sm pt-4">
+                                <li>Provide new hires with software training and veteran employees with refresher courses.</li>
+                                <li>Control and manage flights throughout both takeoff and landing.</li>
+                                <li>Roster preparation and management, as well as training.</li>
+                                <li>Handle overbooked flights, diversions and disruption.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-20 fade-in-section relative">
+             <div class="section-bg-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="0.5" stroke="currentColor" class="w-full h-full"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0l15.482 0m-15.482 0a50.57 50.57 0 01-2.658-.813m2.658.814a60.436 60.436 0 00.491 6.347" /></svg>
+            </div>
+            <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center gap-4">
+                <svg class="w-8 h-8 section-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                Certifications
+            </h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card glass-card-interactive p-6 rounded-xl"><p class="font-semibold text-primary">Selenium WebDriver with Java - Basics to Advanced + Frameworks</p><p class="text-sm text-secondary">Udemy</p></div>
+                <div class="glass-card glass-card-interactive p-6 rounded-xl"><p class="font-semibold text-primary">XPath Tutorial from Basic to Advanced Level</p><p class="text-sm text-secondary">Udemy</p></div>
+                <div class="glass-card glass-card-interactive p-6 rounded-xl"><p class="font-semibold text-primary">Appium - Mobile Testing (Android/iOS) from Scratch + Frameworks</p><p class="text-sm text-secondary">Udemy</p></div>
+                <div class="glass-card glass-card-interactive p-6 rounded-xl"><p class="font-semibold text-primary">Complete Bugzilla Course for Beginners</p><p class="text-sm text-secondary">Udemy</p></div>
+                <div class="glass-card glass-card-interactive p-6 rounded-xl md:col-span-2"><p class="font-semibold text-primary">.NET with MVC, C#, SQL, and Cloud Computing</p><p class="text-sm text-secondary">Aptech</p></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer & Contact Section -->
+    <footer id="contact" class="bg-secondary/20 border-t border-themed mt-20 relative z-10">
+        <div class="container mx-auto px-6 py-16 text-center">
+            <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+            <p class="text-secondary max-w-lg mx-auto mb-10">I'm always open to discussing new challenges and opportunities. Feel free to reach out.</p>
+            
+            <div class="flex justify-center items-center space-x-6 mb-10">
+                <a href="tel:+917710819626" class="group" aria-label="Phone"><svg class="w-10 h-10 text-secondary group-hover:text-green-500 transition-all duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></a>
+                <a href="mailto:avipandey50@gmail.com" class="group" aria-label="Email"><svg class="w-10 h-10 text-secondary group-hover:text-red-500 transition-all duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></a>
+                <a href="https://www.linkedin.com/in/avnesh-p-5285b4208" target="_blank" rel="noopener noreferrer" class="group" aria-label="LinkedIn"><svg class="w-10 h-10 text-secondary group-hover:text-blue-600 transition-all duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="https://github.com/avnesh" target="_blank" rel="noopener noreferrer" class="group" aria-label="GitHub"><svg class="w-10 h-10 text-secondary group-hover:text-purple-500 transition-all duration-300 group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg></a>
+            </div>
+
+            <div class="mb-10">
+                 <a href="AvneshPandey_QA_Automationtester.pdf" download="AvneshPandey_QA_Automationtester.pdf" class="inline-block accent-gradient-bg text-white font-bold py-4 px-10 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl">
+                    Download Resume
+                </a>
+            </div>
+
+            <p class="text-sm text-secondary">&copy; <span id="current-year"></span> Avnesh Pandey. All Rights Reserved.</p>
         </div>
-    </section>
-    <section id="certifications" class="fade-in">
-        <h2>Certifications</h2>
-        <div class="cert-grid">
-            <div class="card">Selenium WebDriver with Java - Udemy</div>
-            <div class="card">Appium Mobile Testing - Udemy</div>
-            <div class="card">XPath Advanced Tutorial - Udemy</div>
-        </div>
-    </section>
-    <footer id="contact" class="fade-in">
-        <h2>Get in Touch</h2>
-        <p>Email: <a href="mailto:avipandey50@gmail.com">avipandey50@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/avnesh-p-5285b4208" target="_blank">Profile</a></p>
-        <p>GitHub: <a href="https://github.com/avnesh" target="_blank">avnesh</a></p>
-        <p class="footer-copy">&copy; <span id="year"></span> Avnesh Pandey</p>
     </footer>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="accent-gradient-bg text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
     <script>
-        const texts = ["QA Engineer", "Automation Specialist", "Bug Hunter"];
-        let index = 0, charIndex = 0;
-        const typingEl = document.getElementById("typing");
-        function type() {
-          if (charIndex < texts[index].length) {
-            typingEl.textContent += texts[index].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, 100);
-          } else {
-            setTimeout(erase, 2000);
-          }
-        }
-        function erase() {
-          if (charIndex > 0) {
-            typingEl.textContent = texts[index].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(erase, 50);
-          } else {
-            index = (index + 1) % texts.length;
-            setTimeout(type, 500);
-          }
-        }
-        document.addEventListener("DOMContentLoaded", type);
-        const fadeElems = document.querySelectorAll(".fade-in");
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Particles.js Initialization ---
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#94a3b8" },
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.7, "random": true },
+                    "size": { "value": 3, "random": true },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#94a3b8", "opacity": 0.6, "width": 1 },
+                    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
+                },
+                "retina_detect": true
+            });
+            
+            // --- Typing Animation ---
+            const typingTextElement = document.getElementById('typing-text');
+            const words = ["QA Engineer", "Automation Specialist", "Bug Hunter"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                if (isDeleting) {
+                    typingTextElement.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typingTextElement.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    setTimeout(() => isDeleting = true, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+                
+                const typingSpeed = isDeleting ? 100 : 150;
+                setTimeout(type, typingSpeed);
             }
-          });
-        }, { threshold: 0.1 });
-        fadeElems.forEach(el => observer.observe(el));
-        document.getElementById("year").textContent = new Date().getFullYear();
+            type();
+
+            // --- Theme Toggle ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const lightIcon = document.getElementById('theme-icon-light');
+            const darkIcon = document.getElementById('theme-icon-dark');
+
+            const applyTheme = (theme) => {
+                const htmlEl = document.documentElement;
+                if (theme === 'dark') {
+                    htmlEl.classList.add('dark');
+                    htmlEl.classList.remove('light');
+                    lightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                } else {
+                    htmlEl.classList.remove('dark');
+                    htmlEl.classList.add('light');
+                    darkIcon.classList.add('hidden');
+                    lightIcon.classList.remove('hidden');
+                }
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+            applyTheme(initialTheme);
+
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
+            // --- Accordion for Experience Section ---
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const trigger = item.querySelector('.accordion-trigger');
+                const content = item.querySelector('.accordion-content');
+                const arrow = item.querySelector('.arrow-icon');
+
+                trigger.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                            otherItem.querySelector('.arrow-icon').classList.remove('rotate-180');
+                        }
+                    });
+
+                    if (isActive) {
+                        item.classList.remove('active');
+                        content.style.maxHeight = null;
+                        arrow.classList.remove('rotate-180');
+                    } else {
+                        item.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        arrow.classList.add('rotate-180');
+                    }
+                });
+            });
+
+            // --- Fade-in Animation on Scroll ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+            
+            // --- Skills Scroller JS Implementation ---
+            const scroller = document.querySelector('.skills-scroller');
+            const scrollerInner = scroller.querySelector('.skills-scroller-inner');
+            const originalContent = Array.from(scrollerInner.children);
+            
+            originalContent.forEach(item => {
+                scrollerInner.appendChild(item.cloneNode(true));
+            });
+
+            let isHovering = false;
+            let scrollInterval;
+            let direction = 1;
+
+            function startScrolling() {
+                if (scrollInterval) clearInterval(scrollInterval);
+                scrollInterval = setInterval(() => {
+                    if (!isHovering) {
+                        if (scroller.scrollLeft >= (scroller.scrollWidth - scroller.clientWidth -1)) {
+                            direction = -1;
+                        } else if (scroller.scrollLeft <= 0) {
+                            direction = 1;
+                        }
+                        scroller.scrollLeft += direction * 1; // Adjust speed here
+                    }
+                }, 25);
+            }
+
+            scroller.addEventListener('mouseenter', () => isHovering = true);
+            scroller.addEventListener('mouseleave', () => isHovering = false);
+            startScrolling();
+
+
+            // --- Smooth Scroll for Nav Links ---
+            document.querySelectorAll('#nav-menu a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const headerOffset = document.getElementById('header').offsetHeight;
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20; // 20px buffer
+
+                    window.scrollTo({
+                         top: offsetPosition,
+                         behavior: "smooth"
+                    });
+                });
+            });
+            
+            // --- Scroll to Top Button ---
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+
+            // --- Set Current Year in Footer ---
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
     </script>
+
 </body>
 </html>
