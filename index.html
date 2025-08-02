@@ -6,24 +6,184 @@
     <meta name="description" content="Portfolio website for Avnesh Pandey - QA Automation Engineer" />
     <meta name="author" content="Avnesh Pandey" />
     <title>Avnesh Pandey | QA Automation Engineer</title>
-    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            background: #0b1120;
+            overflow-x: hidden;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            position: fixed;
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+        }
+        header nav a {
+            margin: 0 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        header nav a:hover {
+            color: #00f2fe;
+        }
+        .hero {
+            text-align: center;
+            padding: 12rem 2rem 6rem;
+            position: relative;
+            z-index: 10;
+        }
+        .hero .name {
+            font-size: 4rem;
+            font-weight: 800;
+        }
+        .tagline {
+            font-size: 1.8rem;
+            color: #00f2fe;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            margin-top: 1rem;
+            background: linear-gradient(45deg, #00f2fe, #4facfe);
+            color: #000;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::after {
+            content: '';
+            position: absolute;
+            background: rgba(255,255,255,0.5);
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            opacity: 0;
+            transition: transform 0.6s, opacity 0.6s;
+        }
+        .btn:active::after {
+            transform: translate(-50%, -50%) scale(4);
+            opacity: 1;
+            transition: 0s;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #0b1120, #1e3a8a, #0f172a, #1e293b);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            z-index: 0;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .floating-icons svg {
+            position: absolute;
+            width: 60px;
+            opacity: 0.15;
+            animation: float 12s ease-in-out infinite;
+        }
+        .icon1 { top: 20%; left: 5%; }
+        .icon2 { top: 50%; right: 10%; animation-delay: 3s; }
+        .icon3 { bottom: 15%; left: 20%; animation-delay: 6s; }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+            100% { transform: translateY(0); }
+        }
+        section {
+            padding: 6rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .skills-grid, .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            padding: 1rem;
+            text-align: center;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .timeline {
+            border-left: 3px solid #00f2fe;
+            padding-left: 2rem;
+        }
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            backdrop-filter: blur(12px);
+        }
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #111;
+        }
+        .footer-copy {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-in-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <!-- Gradient Wave Background -->
     <div class="hero-bg"></div>
-
-    <!-- Floating QA Icons -->
     <div class="floating-icons">
-        <img src="assets/selenium.svg" class="float-icon icon1" alt="Selenium">
-        <img src="assets/appium.svg" class="float-icon icon2" alt="Appium">
-        <img src="assets/bug.svg" class="float-icon icon3" alt="Bug">
+        <!-- Selenium SVG -->
+        <svg class="icon1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#00f2fe"/></svg>
+        <!-- Appium SVG -->
+        <svg class="icon2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="#4facfe"/></svg>
+        <!-- Bug SVG -->
+        <svg class="icon3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M32 12l8 8-8 8-8-8z" fill="#fff"/></svg>
     </div>
-
-    <!-- Header -->
-    <header class="header glass">
+    <header class="header">
         <div class="logo">AP</div>
         <nav>
             <a href="#about">About</a>
@@ -32,43 +192,34 @@
             <a href="#certifications">Certifications</a>
             <a href="#contact">Contact</a>
         </nav>
-        <button id="theme-toggle">🌙</button>
     </header>
-
-    <!-- Hero Section -->
     <section id="hero" class="hero">
         <h1 class="name">Avnesh Pandey</h1>
         <p class="tagline"><span id="typing"></span></p>
-        <a href="AvneshPandey_QA_Automationtester.pdf" download class="btn ripple">Download Resume</a>
-        <div class="lottie-container">
-            <lottie-player src="assets/qa-badge.json" background="transparent" speed="1" loop autoplay></lottie-player>
+        <a href="AvneshPandey_QA_Automationtester.pdf" download class="btn">Download Resume</a>
+        <div style="margin-top:20px;">
+            <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_q5pk6p1k.json" background="transparent" speed="1" loop autoplay style="width:200px;height:200px;"></lottie-player>
         </div>
     </section>
-
-    <!-- About -->
     <section id="about" class="fade-in">
         <h2>About Me</h2>
         <p>Detail-oriented QA & Automation Engineer with experience in Selenium, Appium, API Testing, and performance testing using JMeter. Passionate about delivering high-quality solutions with efficient automation strategies.</p>
     </section>
-
-    <!-- Skills -->
     <section id="skills" class="fade-in">
         <h2>Skills</h2>
         <div class="skills-grid">
-            <div class="card glow">Selenium</div>
-            <div class="card glow">Appium</div>
-            <div class="card glow">Java</div>
-            <div class="card glow">Postman</div>
-            <div class="card glow">JMeter</div>
-            <div class="card glow">SQL</div>
+            <div class="card">Selenium</div>
+            <div class="card">Appium</div>
+            <div class="card">Java</div>
+            <div class="card">Postman</div>
+            <div class="card">JMeter</div>
+            <div class="card">SQL</div>
         </div>
     </section>
-
-    <!-- Experience -->
     <section id="experience" class="fade-in">
         <h2>Experience</h2>
         <div class="timeline">
-            <div class="timeline-item glass glow">
+            <div class="timeline-item">
                 <h3>Quality Analyst Engineer</h3>
                 <p>Open Space Services Pvt Ltd | May 2023 - Present</p>
                 <ul>
@@ -76,7 +227,7 @@
                     <li>Worked on Selenium with Java and Appium for mobile testing.</li>
                 </ul>
             </div>
-            <div class="timeline-item glass glow">
+            <div class="timeline-item">
                 <h3>Sr. Technical Executive</h3>
                 <p>The Gemini | 2021 - 2023</p>
                 <ul>
@@ -85,18 +236,14 @@
             </div>
         </div>
     </section>
-
-    <!-- Certifications -->
     <section id="certifications" class="fade-in">
         <h2>Certifications</h2>
         <div class="cert-grid">
-            <div class="card glow">Selenium WebDriver with Java - Udemy</div>
-            <div class="card glow">Appium Mobile Testing - Udemy</div>
-            <div class="card glow">XPath Advanced Tutorial - Udemy</div>
+            <div class="card">Selenium WebDriver with Java - Udemy</div>
+            <div class="card">Appium Mobile Testing - Udemy</div>
+            <div class="card">XPath Advanced Tutorial - Udemy</div>
         </div>
     </section>
-
-    <!-- Contact -->
     <footer id="contact" class="fade-in">
         <h2>Get in Touch</h2>
         <p>Email: <a href="mailto:avipandey50@gmail.com">avipandey50@gmail.com</a></p>
@@ -104,8 +251,42 @@
         <p>GitHub: <a href="https://github.com/avnesh" target="_blank">avnesh</a></p>
         <p class="footer-copy">&copy; <span id="year"></span> Avnesh Pandey</p>
     </footer>
-
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="script.js"></script>
+    <script>
+        const texts = ["QA Engineer", "Automation Specialist", "Bug Hunter"];
+        let index = 0, charIndex = 0;
+        const typingEl = document.getElementById("typing");
+        function type() {
+          if (charIndex < texts[index].length) {
+            typingEl.textContent += texts[index].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 100);
+          } else {
+            setTimeout(erase, 2000);
+          }
+        }
+        function erase() {
+          if (charIndex > 0) {
+            typingEl.textContent = texts[index].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, 50);
+          } else {
+            index = (index + 1) % texts.length;
+            setTimeout(type, 500);
+          }
+        }
+        document.addEventListener("DOMContentLoaded", type);
+        const fadeElems = document.querySelectorAll(".fade-in");
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        fadeElems.forEach(el => observer.observe(el));
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
